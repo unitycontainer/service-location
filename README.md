@@ -1,2 +1,2 @@
-# service-location-
+# Unity Service Location
 Home for ServiceLocation package
