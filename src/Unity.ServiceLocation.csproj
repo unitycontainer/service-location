@@ -28,10 +28,6 @@
   <PropertyGroup>
     <DebugType Condition="'$(TargetFramework)' != '' AND !$(TargetFramework.StartsWith('netcoreapp'))">Full</DebugType>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Unity\src\Unity.csproj" />
-  </ItemGroup>
   
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -52,6 +48,10 @@
     <PackageReference Include="CommonServiceLocator">
       <Version>1.4.0</Version>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Unity\src\Unity.Container.csproj" />
   </ItemGroup>
 
 </Project>
