@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Practices.ServiceLocation;
+using Unity;
 
 namespace Microsoft.Practices.Unity
 {
