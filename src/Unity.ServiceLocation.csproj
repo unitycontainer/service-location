@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netcoreapp1.0;net47;net45</TargetFrameworks>
+    <TargetFramework>net47</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Description>Unity Service Location</Description>
     <Version>5.0.0-beta</Version>
