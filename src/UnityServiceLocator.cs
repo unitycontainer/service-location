@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Practices.ServiceLocation;
 using Unity;
+using Unity.Lifetime;
 
 namespace Microsoft.Practices.Unity
 {
