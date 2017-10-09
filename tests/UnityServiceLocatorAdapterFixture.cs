@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
+using CommonServiceLocator;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.ServiceLocation.Tests.Components;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,7 +14,7 @@ namespace Unity.ServiceLocation.Tests
     [TestClass]
     public class UnityServiceLocatorAdapterFixture : ServiceLocatorFixture
     {
-        protected override Microsoft.Practices.ServiceLocation.IServiceLocator CreateServiceLocator()
+        protected override IServiceLocator CreateServiceLocator()
         {
             IUnityContainer container = new UnityContainer()
                 .RegisterType<ILogger, AdvancedLogger>()
