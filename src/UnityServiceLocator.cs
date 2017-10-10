@@ -3,17 +3,16 @@
 using System;
 using System.Collections.Generic;
 using CommonServiceLocator;
-using Unity;
 using Unity.Lifetime;
 
-namespace Microsoft.Practices.Unity
+namespace Unity.ServiceLocation
 {
     /// <summary>
     /// An implementation of <see cref="IServiceLocator"/> that wraps a Unity container.
     /// </summary>
     public sealed class UnityServiceLocator : ServiceLocatorImplBase, IDisposable
     {
-        private IUnityContainer container;
+        private IUnityContainer _container;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnityServiceLocator"/> class for a container.
@@ -22,7 +21,7 @@ namespace Microsoft.Practices.Unity
         /// interface implementation.</param>
         public UnityServiceLocator(IUnityContainer container)
         {
-            this.container = container;
+            _container = container;
             container.RegisterInstance<IServiceLocator>(this, new ExternallyControlledLifetimeManager());
         }
 
@@ -32,10 +31,10 @@ namespace Microsoft.Practices.Unity
         /// <filterpriority>2</filterpriority>
         public void Dispose()
         {
-            if (this.container != null)
+            if (_container != null)
             {
-                this.container.Dispose();
-                this.container = null;
+                _container.Dispose();
+                _container = null;
             }
         }
 
@@ -49,12 +48,12 @@ namespace Microsoft.Practices.Unity
         /// </returns>
         protected override object DoGetInstance(Type serviceType, string key)
         {
-            if (this.container == null)
+            if (_container == null)
             {
                 throw new ObjectDisposedException("container");
             }
 
-            return this.container.Resolve(serviceType, key);
+            return _container.Resolve(serviceType, key);
         }
 
         /// <summary>
@@ -67,12 +66,12 @@ namespace Microsoft.Practices.Unity
         /// </returns>
         protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
         {
-            if (this.container == null)
+            if (_container == null)
             {
                 throw new ObjectDisposedException("container");
             }
 
-            return this.container.ResolveAll(serviceType);
+            return _container.ResolveAll(serviceType);
         }
     }
 }
