@@ -1,8 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net47</TargetFramework>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Description>Unity Service Location</Description>
     <Version>5.0.0-beta</Version>
     <AssemblyVersion>5.0.0.0</AssemblyVersion>
@@ -19,14 +17,21 @@
     <Company>Microsoft.Practices.Unity</Company>
   </PropertyGroup>
   
-  <PropertyGroup Condition="Exists('..\..\package.snk')">
+  <PropertyGroup>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\package.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
 
-  <PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFrameworks>netstandard2.0;netcoreapp1.0;net47;net45;net40</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugType>Full</DebugType>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   
   <ItemGroup>
@@ -44,13 +49,16 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <!--<ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
     <PackageReference Include="CommonServiceLocator">
       <Version>2.0.0</Version>
     </PackageReference>
-  </ItemGroup>-->
+    <PackageReference Include="Unity.Abstractions">
+      <Version>2.0.0-alpha</Version>
+    </PackageReference>
+  </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ProjectReference Include="..\..\Abstractions\src\Unity.Abstractions.csproj" />
     <ProjectReference Include="..\..\CommonServiceLocator\src\CommonServiceLocator.csproj" />
   </ItemGroup>
