@@ -9,10 +9,19 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.18" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.18" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Container\src\Unity.Container.csproj" />
     <ProjectReference Include="..\src\Unity.ServiceLocation.csproj" />
   </ItemGroup>
+
+  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+    <PackageReference Include="CommonServiceLocator" Version="2.0.1" />
+    <PackageReference Include="Unity.Abstractions" Version="2.0.0-beta1" />
+    <PackageReference Include="Unity" Version="5.0.0-beta1" />
+  </ItemGroup>
+
+
+  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ProjectReference Include="..\..\Abstractions\src\Unity.Abstractions.csproj" />
+    <ProjectReference Include="..\..\CommonServiceLocator\src\CommonServiceLocator.csproj" />
+    <ProjectReference Include="..\..\Container\src\Unity.Container.csproj" />
+  </ItemGroup>  
 </Project>

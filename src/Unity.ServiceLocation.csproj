@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Unity Service Location</Description>
-    <Version>5.0.0-beta</Version>
+    <Version>5.0.0-beta1</Version>
     <AssemblyVersion>5.0.0.0</AssemblyVersion>
     <FileVersion>5.0.0.0</FileVersion>
     <Copyright>Copyright © Microsoft 2008</Copyright>
@@ -60,7 +60,7 @@
 
   <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
     <PackageReference Include="CommonServiceLocator" Version="2.0.1" />
-    <PackageReference Include="Unity.Abstractions" Version="2.0.0-alpha" />
+    <PackageReference Include="Unity.Abstractions" Version="2.0.0-beta1" />
   </ItemGroup>
 
 
