@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Unity Service Location</Description>
-    <Version>2.0.0-RC2</Version>
+    <Version>2.0.0-RC3</Version>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
     <Copyright>Copyright © Microsoft 2008</Copyright>
@@ -15,23 +15,13 @@
     <PackageId>Unity.ServiceLocation</PackageId>
     <Authors>Microsoft.Practices.Unity</Authors>
     <Company>Microsoft.Practices.Unity</Company>
+    <Configurations>Debug;Release;Package</Configurations>
   </PropertyGroup>
   
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>package.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <TargetFrameworks>netstandard2.0;netcoreapp1.0;net47;net45;net40</TargetFrameworks>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DebugType>Full</DebugType>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <TargetFramework>net47</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -49,15 +39,32 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PackageReference Include="CommonServiceLocator" Version="2.0.1" />
-    <PackageReference Include="Unity.Abstractions" Version="2.0.0-RC2" />
-  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFrameworks>netstandard2.0;netcoreapp1.0;net47;net45;net40</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Package'">
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <TargetFrameworks>netstandard2.0;netcoreapp1.0;net47;net45;net40</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugType>Full</DebugType>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <TargetFramework>net47</TargetFramework>
+  </PropertyGroup>
 
 
-  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+  <ItemGroup Condition="'$(Configuration)' != 'Release'">
     <ProjectReference Include="..\..\Abstractions\src\Unity.Abstractions.csproj" />
     <ProjectReference Include="..\..\CommonServiceLocator\src\CommonServiceLocator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+    <PackageReference Include="CommonServiceLocator" Version="2.0.1" />
+    <PackageReference Include="Unity.Abstractions" Version="2.0.0-RC3" />
   </ItemGroup>
 
 </Project>

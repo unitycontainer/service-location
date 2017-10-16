@@ -12,16 +12,16 @@
     <ProjectReference Include="..\src\Unity.ServiceLocation.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PackageReference Include="CommonServiceLocator" Version="2.0.1" />
-    <PackageReference Include="Unity.Abstractions" Version="2.0.0-RC2" />
-    <PackageReference Include="Unity" Version="5.0.0-RC2" />
-  </ItemGroup>
-
-
-  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+  <ItemGroup Condition=" '$(Configuration)' != 'Release' ">
     <ProjectReference Include="..\..\Abstractions\src\Unity.Abstractions.csproj" />
     <ProjectReference Include="..\..\CommonServiceLocator\src\CommonServiceLocator.csproj" />
     <ProjectReference Include="..\..\Container\src\Unity.Container.csproj" />
   </ItemGroup>  
+
+  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+    <PackageReference Include="CommonServiceLocator" Version="2.0.1" />
+    <PackageReference Include="Unity.Abstractions" Version="2.0.0-RC3" />
+    <PackageReference Include="Unity" Version="5.0.0-RC3" />
+  </ItemGroup>
+  
 </Project>
