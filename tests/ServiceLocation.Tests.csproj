@@ -20,8 +20,8 @@
 
   <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
     <PackageReference Include="CommonServiceLocator" Version="2.0.1" />
-    <PackageReference Include="Unity.Abstractions" Version="2.0.0-RC3" />
-    <PackageReference Include="Unity.Container" Version="5.0.0-RC3" />
+    <PackageReference Include="Unity.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Unity.Container" Version="5.0.0" />
   </ItemGroup>
   
 </Project>
