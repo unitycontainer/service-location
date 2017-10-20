@@ -58,14 +58,25 @@
   </PropertyGroup>
 
 
-  <ItemGroup Condition="'$(Configuration)' != 'Release'">
-    <ProjectReference Include="..\..\Abstractions\src\Unity.Abstractions.csproj" />
-    <ProjectReference Include="..\..\CommonServiceLocator\src\CommonServiceLocator.csproj" />
+  <PropertyGroup>
+    <UnityAbstractions>$(SolutionDir)\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
+    <CommonServiceLocator>$(SolutionDir)\CommonServiceLocator\src\CommonServiceLocator.csproj</CommonServiceLocator>
+  </PropertyGroup>
+
+  <ItemGroup Condition="Exists('$(UnityAbstractions)')">
+    <ProjectReference Include="$(UnityAbstractions)" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+  <ItemGroup Condition="Exists('$(CommonServiceLocator)')">
+    <ProjectReference Include="$(CommonServiceLocator)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
+    <PackageReference Include="Unity.Abstractions" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('$(CommonServiceLocator)')">
     <PackageReference Include="CommonServiceLocator" Version="2.0.1" />
-    <PackageReference Include="Unity.Abstractions" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
