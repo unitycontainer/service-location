@@ -42,7 +42,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <TargetFrameworks>netstandard2.0;netcoreapp1.0;net47;net45;net40</TargetFrameworks>
-    <OutputPath>$(SolutionDir)\lib\</OutputPath>
+    <OutputPath>$(SolutionDir)lib</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
