@@ -15,7 +15,6 @@
     <PackageId>Unity.ServiceLocation</PackageId>
     <Authors>Microsoft.Practices.Unity</Authors>
     <Company>Microsoft.Practices.Unity</Company>
-    <Configurations>Debug;Release;Package</Configurations>
   </PropertyGroup>
   
   <PropertyGroup>
@@ -43,12 +42,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <TargetFrameworks>netstandard2.0;netcoreapp1.0;net47;net45;net40</TargetFrameworks>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)' == 'Package'">
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <TargetFrameworks>netstandard2.0;netcoreapp1.0;net47;net45;net40</TargetFrameworks>
-    <OutputPath>$(SolutionDir)\lib\</OutputPath>
+    <OutputPath>$(SolutionDir)lib</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -57,10 +51,9 @@
     <TargetFramework>net47</TargetFramework>
   </PropertyGroup>
 
-
   <PropertyGroup>
-    <UnityAbstractions>$(SolutionDir)\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
-    <CommonServiceLocator>$(SolutionDir)\CommonServiceLocator\src\CommonServiceLocator.csproj</CommonServiceLocator>
+    <UnityAbstractions>..\..\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
+    <CommonServiceLocator>..\..\CommonServiceLocator\src\CommonServiceLocator.csproj</CommonServiceLocator>
   </PropertyGroup>
 
   <ItemGroup Condition="Exists('$(UnityAbstractions)')">
