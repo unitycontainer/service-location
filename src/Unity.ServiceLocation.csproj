@@ -51,15 +51,25 @@
     <TargetFramework>net47</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <UnityAbstractions>..\..\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
+    <CommonServiceLocator>..\..\CommonServiceLocator\src\CommonServiceLocator.csproj</CommonServiceLocator>
+  </PropertyGroup>
 
-  <ItemGroup Condition="'$(Configuration)' != 'Release'">
-    <ProjectReference Include="..\..\Abstractions\src\Unity.Abstractions.csproj" />
-    <ProjectReference Include="..\..\CommonServiceLocator\src\CommonServiceLocator.csproj" />
+  <ItemGroup Condition="Exists('$(UnityAbstractions)')">
+    <ProjectReference Include="$(UnityAbstractions)" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+  <ItemGroup Condition="Exists('$(CommonServiceLocator)')">
+    <ProjectReference Include="$(CommonServiceLocator)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
+    <PackageReference Include="Unity.Abstractions" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('$(CommonServiceLocator)')">
     <PackageReference Include="CommonServiceLocator" Version="2.0.1" />
-    <PackageReference Include="Unity.Abstractions" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
