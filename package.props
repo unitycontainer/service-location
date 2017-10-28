@@ -1,0 +1,15 @@
+<Project>
+
+  <PropertyGroup>
+    <Version>2.0.2</Version>
+    <PackageReleaseNotes>This package is compatible with  .NET Standard 1.0 as well as .NET 4.0, 4.5, and 4.7 frameworks.</PackageReleaseNotes>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
+    <DependsOn_UnityAbstractions>2.1.0</DependsOn_UnityAbstractions>
+    <DependsOn_CommonServiceLocator>2.0.1</DependsOn_CommonServiceLocator>
+    <DependsOn_UnityContainer>5.1.0</DependsOn_UnityContainer>
+  </PropertyGroup>
+
+</Project>

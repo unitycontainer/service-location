@@ -1,11 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Version>2.0.2</Version>
-    <PackageReleaseNotes>This package is compatible with  .NET Standard 1.0 as well as .NET 4.0, 4.5, and 4.7 frameworks.</PackageReleaseNotes>
-    <UnityAbstractionsVersion>2.1.0</UnityAbstractionsVersion>
-    <CommonServiceLocatorVersion>2.0.1</CommonServiceLocatorVersion>
-  </PropertyGroup>
+  <Import Project="..\package.props" />
 
   <PropertyGroup>
     <FileVersion>$(Version).0</FileVersion>
@@ -67,11 +62,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
-    <PackageReference Include="Unity.Abstractions" Version="$(UnityAbstractionsVersion)" />
+    <PackageReference Include="Unity.Abstractions" Version="$(DependsOn_UnityAbstractions)" />
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('$(CommonServiceLocator)')">
-    <PackageReference Include="CommonServiceLocator" Version="$(CommonServiceLocatorVersion)" />
+    <PackageReference Include="CommonServiceLocator" Version="$(DependsOn_CommonServiceLocator)" />
   </ItemGroup>
 
 </Project>
