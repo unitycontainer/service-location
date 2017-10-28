@@ -7,9 +7,9 @@
 
 
   <PropertyGroup>
-    <DependsOn_UnityContainer>5.1.0</DependsOn_UnityContainer>
-    <DependsOn_UnityAbstractions>2.1.0</DependsOn_UnityAbstractions>
-    <DependsOn_CommonServiceLocator>2.0.1</DependsOn_CommonServiceLocator>
+    <UnityContainerVersion>5.1.0</UnityContainerVersion>
+    <UnityAbstractionsVersion>2.1.0</UnityAbstractionsVersion>
+    <CommonServiceLocatorVersion>2.0.1</CommonServiceLocatorVersion>
   </PropertyGroup>
 
 </Project>

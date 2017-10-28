@@ -34,15 +34,15 @@
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
-    <PackageReference Include="Unity.Abstractions" Version="$(DependsOn_UnityAbstractions)" />
+    <PackageReference Include="Unity.Abstractions" Version="$(UnityAbstractionsVersion)" />
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('$(CommonServiceLocator)')">
-    <PackageReference Include="CommonServiceLocator" Version="$(DependsOn_CommonServiceLocator)" />
+    <PackageReference Include="CommonServiceLocator" Version="$(CommonServiceLocatorVersion)" />
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('$(UnityContainer)')">
-    <PackageReference Include="Unity.Container" Version="$(DependsOn_UnityContainer)" />
+    <PackageReference Include="Unity.Container" Version="$(UnityContainerVersion)" />
   </ItemGroup>
 
   
