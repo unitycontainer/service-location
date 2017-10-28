@@ -2,29 +2,30 @@ image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
 
+install:
+  - ps: $env:build_version = (Select-Xml -Path ".\src\Unity.ServiceLocation.csproj" -XPath "/Project/PropertyGroup/Version" | Select-Object -ExpandProperty Node).InnerText
+  - ps: Update-AppveyorBuild -Version "$env:build_version.$env:APPVEYOR_BUILD_NUMBER"
+
+dotnet_csproj:
+  patch: false
+
 before_build:
 - cmd: dotnet restore
-
-after_build:
-- choco install opencover.portable
-- choco install codecov
 
 build:
   project: package.sln
   parallel: true
   verbosity: minimal
 
-dotnet_csproj:
-  patch: false
-  file: '**\*.csproj'
-  version: $(build_version)
-  package_version: $(build_version)
-#  file_version: $(APPVEYOR_BUILD_VERSION)
+after_build:
+- choco install opencover.portable
+- choco install codecov
   
-
 test_script:
-- OpenCover.Console.exe -register:user -target:"C:\Program Files\dotnet\dotnet.exe" -targetargs:"test"
-- codecov -f "results.xml"  
+- OpenCover.Console.exe -register:user -target:"C:\Program Files\dotnet\dotnet.exe" -targetargs:"test --framework net47 --verbosity q"
+
+after_test:
+- codecov -f "results.xml" 
 
 artifacts:
 - path: '**\Unity.ServiceLocation.*.nupkg'
