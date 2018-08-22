@@ -7,7 +7,7 @@
     <AssemblyVersion>$(Version).0</AssemblyVersion>
     <PackageId>Unity.ServiceLocation</PackageId>
     <Description>Unity Service Location</Description>
-    <Copyright>Copyright © Microsoft 2008</Copyright>
+    <Copyright>Copyright © Unity Container Project 2018</Copyright>
     <PackageTags>Unity Container unitycontainer Microsoft.Practices.Unity IoC Microsoft.Practices.ServiceLocation Service Location</PackageTags>
     <PackageProjectUrl>https://github.com/unitycontainer/unity</PackageProjectUrl>
     <RepositoryUrl>https://github.com/IoC-Unity/Unity</RepositoryUrl>
