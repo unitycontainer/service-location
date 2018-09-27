@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\package.props" />
 
@@ -17,16 +17,11 @@
 
   <PropertyGroup>
     <UnityAbstractions>..\..\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
-    <CommonServiceLocator>..\..\CommonServiceLocator\src\CommonServiceLocator.csproj</CommonServiceLocator>
     <UnityContainer>..\..\Container\src\Unity.Container.csproj</UnityContainer>
   </PropertyGroup>
 
   <ItemGroup Condition="Exists('$(UnityAbstractions)')">
     <ProjectReference Include="$(UnityAbstractions)" />
-  </ItemGroup>
-
-  <ItemGroup Condition="Exists('$(CommonServiceLocator)')">
-    <ProjectReference Include="$(CommonServiceLocator)" />
   </ItemGroup>
 
   <ItemGroup Condition="Exists('$(UnityContainer)')">
@@ -35,10 +30,6 @@
 
   <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
     <PackageReference Include="Unity.Abstractions" Version="$(UnityAbstractionsVersion)" />
-  </ItemGroup>
-
-  <ItemGroup Condition="!Exists('$(CommonServiceLocator)')">
-    <PackageReference Include="CommonServiceLocator" Version="$(CommonServiceLocatorVersion)" />
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('$(UnityContainer)')">

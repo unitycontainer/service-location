@@ -19,7 +19,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>package.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-    <TargetFrameworks>netstandard1.0;netstandard2.0;netcoreapp1.0;netcoreapp2.0;net47;net46;net45;net40</TargetFrameworks>
+    <TargetFrameworks>netstandard1.0;netstandard2.0;netcoreapp1.0;netcoreapp2.0;net47;net46;net45</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,7 +40,6 @@
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <OutputPath>$(SolutionDir)lib</OutputPath>
     <DebugType>Portable</DebugType>
   </PropertyGroup>
 
@@ -51,22 +50,17 @@
 
   <PropertyGroup>
     <UnityAbstractions>..\..\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
-    <CommonServiceLocator>..\..\CommonServiceLocator\src\CommonServiceLocator.csproj</CommonServiceLocator>
   </PropertyGroup>
 
   <ItemGroup Condition="Exists('$(UnityAbstractions)')">
     <ProjectReference Include="$(UnityAbstractions)" />
   </ItemGroup>
 
-  <ItemGroup Condition="Exists('$(CommonServiceLocator)')">
-    <ProjectReference Include="$(CommonServiceLocator)" />
-  </ItemGroup>
-
   <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
     <PackageReference Include="Unity.Abstractions" Version="$(UnityAbstractionsVersion)" />
   </ItemGroup>
 
-  <ItemGroup Condition="!Exists('$(CommonServiceLocator)')">
+  <ItemGroup>
     <PackageReference Include="CommonServiceLocator" Version="$(CommonServiceLocatorVersion)" />
   </ItemGroup>
 
