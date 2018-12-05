@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using CommonServiceLocator;
-using Unity.Lifetime;
 
 namespace Unity.ServiceLocation
 {
