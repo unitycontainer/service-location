@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <Version>5.9.0</Version>
+    <Version>5.9.1</Version>
     <PackageReleaseNotes>This package is compatible with .NET Standard 1.0 and 2.0, Net Core 1.0 and 2.0 as well as .NET 4.0, 4.5, 4.6, and 4.7 frameworks.</PackageReleaseNotes>
   </PropertyGroup>
 
@@ -10,7 +10,6 @@
     <UnityContainerVersion>5.9.*</UnityContainerVersion>
     <UnityAbstractionsVersion>4.*</UnityAbstractionsVersion>
     <CommonServiceLocatorVersion>2.0.*</CommonServiceLocatorVersion>
-    <TargetFrameworks>netstandard2.0;netstandard1.0;netcoreapp2.0;netcoreapp1.0;net47;net46;net45;net40</TargetFrameworks>
   </PropertyGroup>
 
 </Project>
