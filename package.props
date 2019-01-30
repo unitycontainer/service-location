@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <UnityContainerVersion>5.9</UnityContainerVersion>
-    <UnityAbstractionsVersion>4.0</UnityAbstractionsVersion>
-    <CommonServiceLocatorVersion>2.0</CommonServiceLocatorVersion>
+    <UnityContainerVersion>5.9.*</UnityContainerVersion>
+    <UnityAbstractionsVersion>4.0.*</UnityAbstractionsVersion>
+    <CommonServiceLocatorVersion>2.0.*</CommonServiceLocatorVersion>
   </PropertyGroup>
 
 </Project>
