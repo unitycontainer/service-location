@@ -51,7 +51,8 @@ namespace Unity.ServiceLocation
                 throw new ObjectDisposedException("container");
             }
 
-            return _container.Resolve(serviceType, key);
+            var name = string.IsNullOrEmpty(key) ? null : key;
+            return _container.Resolve(serviceType, name);
         }
 
         /// <summary>
