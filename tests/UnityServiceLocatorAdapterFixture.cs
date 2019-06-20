@@ -1,10 +1,7 @@
-﻿
-
-using System;
-using CommonServiceLocator;
-using Microsoft.Practices.Unity;
+﻿using CommonServiceLocator;
 using Microsoft.Practices.Unity.ServiceLocation.Tests.Components;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Unity.ServiceLocation.Tests
 {
