@@ -2,9 +2,10 @@
 
   <Import Project="..\package.props" />
 
+  <!-- Package Info -->
+
   <PropertyGroup>
-    <FileVersion>$(Version).0</FileVersion>
-    <AssemblyVersion>$(Version).0</AssemblyVersion>
+	  
     <PackageId>Unity.ServiceLocation</PackageId>
     <Description>Unity Service Location</Description>
     <Copyright>Copyright © .NET Foundation and Contributors. All Rights Reserved</Copyright>
@@ -19,7 +20,14 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>package.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-    <TargetFrameworks>netstandard2.0;netstandard1.0;netcoreapp2.0;netcoreapp1.0;net47;net46;net45;net40</TargetFrameworks>
+	  
+    <Version>$(VersionMajor).$(VersionMinor).$(VersionPatch)</Version>
+	<VersionBuild Condition="'$(VersionBuild)' == ''">0</VersionBuild>
+	<FileVersion>$(Version).$(VersionBuild)</FileVersion>
+    <AssemblyVersion>$(Version).$(VersionBuild)</AssemblyVersion>
+	<PackageVersion Condition="'$(VersionSuffix)' == ''">$(Version)</PackageVersion>
+    <PackageVersion Condition="'$(VersionSuffix)' != ''">$(Version)-$(VersionSuffix)</PackageVersion>
+  
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,9 +36,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -57,14 +62,15 @@
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
-    <PackageReference Include="Unity.Abstractions" Version="5.11.*" />
+    <PackageReference Include="Unity.Abstractions" Version="$(VersionMajor).$(VersionMinor).*-*" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommonServiceLocator" Version="$(CommonServiceLocatorVersion)" />
+    <PackageReference Include="CommonServiceLocator" Version="2.0.*" />
   </ItemGroup>
 
   <!-- Sourcelink -->
+	
   <PropertyGroup>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -77,5 +83,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
+  <!-- Release Notes -->
+
+  <Target Name="PreparePackageReleaseNotesFromFile" BeforeTargets="GenerateNuspec">
+    <ReadLinesFromFile File="../RELEASE-NOTES.txt">
+      <Output TaskParameter="Lines" ItemName="ReleaseNoteLines" />
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <PackageReleaseNotes>@(ReleaseNoteLines, '%0a')</PackageReleaseNotes>
+    </PropertyGroup>
+  </Target>
 
 </Project>
